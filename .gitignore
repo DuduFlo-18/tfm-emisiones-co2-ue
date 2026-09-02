@@ -1,0 +1,29 @@
+# Entorno virtual y cache de Python
+.venv/
+__pycache__/
+*.py[cod]
+
+# Datos crudos y derivados: se regeneran ejecutando src/01_extraccion.py.
+# El Parquet de la muestra ocupa 21 MB y no debe versionarse.
+datos/crudo/
+datos/procesado/
+
+# Se SI versionan los agregados de poblacion y los metadatos de extraccion:
+# son ligeros y documentan la trazabilidad de la descarga.
+!datos/agregados/
+!datos/metadatos_extraccion.json
+
+# Documentacion en curso. La memoria y el documento de trabajo se incorporan
+# al repositorio en la entrega final, no en cada avance.
+documentos/
+
+# Cuadernos
+.ipynb_checkpoints/
+
+# Carpeta temporal de depuracion de codigo
+_limpio/
+
+# Ficheros temporales de Office y del sistema
+~$*
+.DS_Store
+Thumbs.db
