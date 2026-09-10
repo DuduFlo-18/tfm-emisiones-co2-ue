@@ -1,0 +1,41 @@
+{
+  "conjunto_prueba": 167937,
+  "mediana_objetivo": 128.0,
+  "modelos": [
+    {
+      "modelo": "Regresión lineal",
+      "MAE": 7.281,
+      "RMSE": 10.222,
+      "R2": 0.871,
+      "error relativo %": 5.68828125
+    },
+    {
+      "modelo": "Random Forest",
+      "MAE": 1.575,
+      "RMSE": 3.061,
+      "R2": 0.988,
+      "error relativo %": 1.23046875
+    },
+    {
+      "modelo": "LightGBM sin ajustar",
+      "MAE": 1.74,
+      "RMSE": 2.743,
+      "R2": 0.991,
+      "error relativo %": 1.359375
+    },
+    {
+      "modelo": "LightGBM ajustado",
+      "MAE": 1.2296325646145585,
+      "RMSE": 2.1830033788042678,
+      "R2": 0.9941281860697901,
+      "error relativo %": 0.9606504411051239
+    },
+    {
+      "modelo": "LightGBM, solo variables físicas",
+      "MAE": 2.112,
+      "RMSE": 3.477,
+      "R2": 0.985,
+      "error relativo %": 1.6500000000000001
+    }
+  ]
+}

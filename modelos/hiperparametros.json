@@ -1,0 +1,29 @@
+{
+  "parametros": {
+    "subsample": 0.7,
+    "num_leaves": 255,
+    "n_estimators": 1200,
+    "min_child_samples": 20,
+    "learning_rate": 0.06,
+    "colsample_bytree": 0.8
+  },
+  "mae_prueba": 1.2296325646145585,
+  "rmse_prueba": 2.1830033788042678,
+  "r2_prueba": 0.9941281860697901,
+  "semilla": 42,
+  "n_entrenamiento": 671747,
+  "variables": [
+    "M (kg)",
+    "Ec (cm3)",
+    "Ep (KW)",
+    "Erwltp (g/km)",
+    "cil_por_kw",
+    "ft_norm",
+    "Fm",
+    "marca_norm",
+    "MS",
+    "Mp"
+  ],
+  "grupos_silueta": 2,
+  "grupos_operativos": 4
+}
