@@ -1,0 +1,68 @@
+{
+  "fecha_utc": "2026-09-02T15:12:12.008990+00:00",
+  "fichero_entrada": "co2cars_2024_muestra1de10.parquet",
+  "fichero_salida": "co2cars_2024_limpio.parquet",
+  "registros_entrada": 1076533,
+  "registros_salida": 1072129,
+  "porcentaje_conservado": 99.591,
+  "pasos": [
+    {
+      "paso": "columnas vacias eliminadas: ['Enedc (g/km)', 'W (mm)', 'At1 (mm)', 'At2 (mm)']",
+      "decision": "D-08",
+      "filas_eliminadas": 0,
+      "filas_restantes": 1076533
+    },
+    {
+      "paso": "etiquetas de control en el campo de fabricante",
+      "decision": "D-09",
+      "filas_eliminadas": 3852,
+      "filas_restantes": 1072681
+    },
+    {
+      "paso": "registros sin valor de emisiones",
+      "decision": "H-04",
+      "filas_eliminadas": 514,
+      "filas_restantes": 1072167
+    },
+    {
+      "paso": "masa fuera del rango M1 (800-3500 kg)",
+      "decision": "D-13",
+      "filas_eliminadas": 38,
+      "filas_restantes": 1072129
+    },
+    {
+      "paso": "potencia anulada en hibridos ligeros",
+      "decision": "D-12",
+      "filas_eliminadas": 0,
+      "campos_anulados": 3009,
+      "filas_restantes": 1072129
+    },
+    {
+      "paso": "ecoinnovacion ausente recodificada a 0",
+      "decision": "D-10",
+      "filas_eliminadas": 0,
+      "campos_recodificados": 482395,
+      "filas_restantes": 1072129
+    },
+    {
+      "paso": "pool vacio recodificado como categoria",
+      "decision": "D-11",
+      "filas_eliminadas": 0,
+      "campos_recodificados": 64478,
+      "filas_restantes": 1072129
+    },
+    {
+      "paso": "normalizacion de combustible y marca",
+      "decision": "D-16 / H-01",
+      "filas_eliminadas": 0,
+      "marcas_antes": 171,
+      "marcas_despues": 132,
+      "filas_restantes": 1072129
+    }
+  ],
+  "reparto_por_regimen": {
+    "Combustión": 839684,
+    "Cero emisiones": 155728,
+    "Híbrido enchufable": 76717
+  }
+}

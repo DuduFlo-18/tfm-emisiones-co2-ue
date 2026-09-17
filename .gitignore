@@ -17,9 +17,14 @@ modelos/*.txt
 !datos/metadatos_extraccion.json
 !modelos/*.json
 
-# Salidas locales
-documentos/
+# Salidas locales y carpetas de trabajo
+documentos/*
 _limpio/
+
+# Entregables: se versionan de forma explicita
+!documentos/Memoria_TFM_Eduardo_Flores_Carralero.docx
+!documentos/cuadro_mando_co2.pbix
+!documentos/cuadro_mando.pdf
 
 # Temporales de Office y del sistema
 ~$*

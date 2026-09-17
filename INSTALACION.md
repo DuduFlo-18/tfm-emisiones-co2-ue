@@ -1,95 +1,99 @@
 # Instalación del entorno (Windows, sin máquina virtual)
 
-Guía paso a paso. Tiempo estimado: 15-20 minutos.
+Guía de montaje del entorno de trabajo. Tiempo estimado: 15-20 minutos.
 
 ---
 
 ## Paso 1 — Instalar Python
 
-1. Ve a **https://www.python.org/downloads/windows/**
-2. Descarga **Python 3.12** (o 3.11), instalador de 64 bits.
-3. Ejecuta el instalador y — **esto es lo más importante** — marca la casilla
-   **"Add python.exe to PATH"** que aparece abajo del todo en la primera pantalla.
-   Si no la marcas, Windows no encontrará Python después.
-4. Pulsa "Install Now" y espera a que termine.
+1. Ir a **https://www.python.org/downloads/windows/**
+2. Descargar **Python 3.13**, instalador de 64 bits. Es la versión con la que se
+   desarrolló el proyecto y a la que están fijadas las dependencias.
+3. Ejecutar el instalador y marcar la casilla **"Add python.exe to PATH"**, que
+   aparece al final de la primera pantalla. Es el paso crítico: sin esa casilla
+   Windows no localiza el intérprete.
+4. Pulsar "Install Now" y esperar a que termine.
 
-**Comprobación:** abre el menú Inicio, escribe `cmd`, abre "Símbolo del sistema"
-y escribe:
+**Comprobación.** En el símbolo del sistema:
 
 ```
 python --version
 ```
 
-Debe responder algo como `Python 3.12.x`. Si dice que no reconoce el comando,
-reinstala marcando la casilla del PATH.
+La respuesta debe ser `Python 3.13.x`. Si el comando no se reconoce, la casilla
+del PATH no quedó marcada y procede reinstalar.
 
 ---
 
 ## Paso 2 — Instalar Visual Studio Code
 
-1. Ve a **https://code.visualstudio.com/**
-2. Descarga e instala la versión para Windows (acepta las opciones por defecto).
-3. Abre VS Code.
-4. En la barra lateral izquierda, pulsa el icono de **Extensiones**
-   (cuatro cuadraditos) e instala estas dos, buscándolas por nombre:
-   - **Python** (de Microsoft)
-   - **Jupyter** (de Microsoft)
+1. Ir a **https://code.visualstudio.com/**
+2. Descargar e instalar la versión para Windows con las opciones por defecto.
+3. Abrir VS Code.
+4. En la barra lateral izquierda, en el icono de **Extensiones**, instalar:
+   - **Python** (Microsoft)
+   - **Jupyter** (Microsoft)
 
 ---
 
-## Paso 2b — Instalar Git
+## Paso 3 — Instalar Git
 
 El anteproyecto declara control de versiones con Git y GitHub, y la normativa
-pide documentarlo en "Material y métodos". Además te sirve de red de seguridad:
-si algo se rompe, vuelves a la versión anterior.
+pide documentarlo en el apartado de material y métodos. Aporta además trazas de
+cada cambio y permite revertir cualquier versión.
 
-1. Descarga Git desde **https://git-scm.com/download/win**
-2. Instálalo aceptando todas las opciones por defecto (son correctas).
-3. Comprueba en una terminal nueva:
+1. Descargar Git desde **https://git-scm.com/download/win**
+2. Instalar con las opciones por defecto.
+3. Comprobar en una terminal nueva:
 
 ```
 git --version
 ```
 
-4. Si no tienes cuenta, créala en **https://github.com** (gratuita).
-5. Configura tu identidad (una sola vez, con tus datos):
+4. Configurar la identidad del autor, una sola vez:
 
 ```
-git config --global user.name "Eduardo Flores Carralero"
-git config --global user.email "tu-correo@ejemplo.com"
+git config --global user.name "Nombre Apellidos"
+git config --global user.email "correo@ejemplo.com"
 ```
 
-> El repositorio lo crearemos **privado**. El código se entrega al final por la
-> plataforma de depósito; GitHub es para tu control interno, no para publicarlo.
+> El repositorio permanece privado mientras dura el desarrollo y se abre al
+> público en la entrega, para que el enlace citado en el apartado 3.5 de la
+> memoria sea consultable. El código se deposita además en la plataforma de
+> entrega del máster.
 
 ---
 
-## Paso 3 — Crear la carpeta del proyecto
+## Paso 4 — Crear la carpeta del proyecto
 
-1. Crea una carpeta para el TFM donde te resulte cómodo, por ejemplo:
-   `C:\Users\TuUsuario\Documents\TFM`
-2. Descomprime ahí dentro el contenido del proyecto, de forma que quede así:
+1. Crear una carpeta para el trabajo, por ejemplo
+   `C:\Users\<usuario>\Documents\TFM`.
+2. Clonar el repositorio en esa ruta, o descomprimir ahí el contenido del
+   proyecto, de forma que la estructura quede así:
 
 ```
 TFM\
 ├── requirements.txt
 ├── INSTALACION.md
 ├── src\
-│   └── 01_extraccion.py
-└── datos\          (se crea sola al ejecutar)
+│   ├── 01_extraccion.py
+│   ├── 02_preprocesado.py
+│   └── 03_datos_powerbi.py
+├── notebooks\
+└── datos\          (se crea al ejecutar la extracción)
 ```
 
-3. En VS Code: **Archivo → Abrir carpeta...** y selecciona la carpeta `TFM`.
+3. En VS Code: **Archivo → Abrir carpeta...** y seleccionar la carpeta `TFM`.
 
 ---
 
-## Paso 4 — Crear el entorno virtual e instalar las librerías
+## Paso 5 — Crear el entorno virtual e instalar las librerías
 
-Un "entorno virtual" es una carpeta aislada con las librerías de este proyecto,
-para que no se mezclen con otras cosas que tengas instaladas en el ordenador.
+Un entorno virtual es un directorio aislado con las librerías de este proyecto,
+independiente de cualquier otra instalación del sistema.
 
-1. En VS Code abre el terminal: menú **Terminal → Nuevo terminal**.
-2. Escribe estos comandos, uno a uno, esperando a que termine cada uno:
+1. Abrir el terminal integrado: **Terminal → Nuevo terminal**.
+2. Ejecutar los dos comandos siguientes, esperando a que termine cada uno:
 
 ```powershell
 python -m venv .venv
@@ -99,16 +103,16 @@ python -m venv .venv
 .\.venv\Scripts\activate
 ```
 
-Tras el segundo comando debe aparecer `(.venv)` al principio de la línea.
-Eso significa que el entorno está activo.
+Tras el segundo comando aparece `(.venv)` al principio de la línea, lo que
+indica que el entorno está activo.
 
-> **Si da error de permisos** al activar, ejecuta primero esto y vuelve a
-> intentarlo:
+> **Error de permisos al activar.** Ejecutar primero el comando siguiente y
+> repetir la activación:
 > ```powershell
 > Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 > ```
 
-3. Instala las librerías (tarda unos minutos, es normal):
+3. Instalar las librerías. El proceso tarda varios minutos:
 
 ```powershell
 pip install -r requirements.txt
@@ -116,23 +120,23 @@ pip install -r requirements.txt
 
 ---
 
-## Paso 5 — Ejecutar la extracción de datos
+## Paso 6 — Ejecutar la extracción de datos
 
-Con el entorno activo `(.venv)`, ejecuta:
+Con el entorno activo `(.venv)`:
 
 ```powershell
 python src\01_extraccion.py
 ```
 
-El script hará tres cosas y te irá informando por pantalla:
+El script realiza tres operaciones e informa por pantalla de cada una:
 
 1. **Detecta** cuántas filas admite la API de la EEA por petición.
 2. **Descarga los agregados** de población (medias por año, país, marca y
    combustible), calculados por el servidor sobre los 10,7 millones de registros.
-3. **Descarga una muestra** de ~539.000 vehículos individuales y la guarda en
-   formato Parquet.
+3. **Descarga una muestra** de ~1.076.000 vehículos individuales, el 10 % de la
+   población, y la guarda en formato Parquet.
 
-Al terminar tendrás:
+La estructura resultante es:
 
 ```
 datos\
@@ -142,9 +146,14 @@ datos\
 │   ├── resumen_por_marca.csv
 │   └── estadisticos_globales.csv
 ├── crudo\
-│   └── co2cars_2024_muestra1de20.parquet
+│   └── co2cars_2024_muestra1de10.parquet
 └── metadatos_extraccion.json
 ```
+
+A continuación se ejecuta `python src\02_preprocesado.py`, que aplica las reglas
+de depuración y deja constancia del recuento de registros afectados por cada una
+en `datos/procesado/informe_preprocesado.json`. Los cuadernos se ejecutan
+después, en orden numérico.
 
 ---
 
@@ -156,49 +165,50 @@ datos\
 | `python src\01_extraccion.py --fraccion 20` | Muestra del 5 % (~539.000 filas), más ligera. |
 | `python src\01_extraccion.py --fraccion 5` | Muestra del 20 % (~2.156.000 filas). |
 | `python src\01_extraccion.py --modo completo` | Los 10,7 millones. Puede tardar horas. |
-| `python src\01_extraccion.py --saltar-agregados` | Repite solo el detalle, sin volver a bajar los agregados. |
+| `python src\01_extraccion.py --saltar-agregados` | Repite solo el detalle, sin volver a descargar los agregados. |
 
-> El 10 % es el punto de partida. La **curva de aprendizaje** que se calculará más
-> adelante dirá si ese volumen es suficiente o conviene ampliarlo; en ese caso
-> basta con volver a ejecutar el script cambiando `--fraccion`.
+El 10 % es el volumen de trabajo del análisis. La curva de aprendizaje calculada
+en el cuaderno 06 evalúa si ese tamaño es suficiente; para ampliarlo basta con
+volver a ejecutar el script cambiando `--fraccion`.
 
 ### Cómo se toma la muestra
 
 El muestreo es **pseudoaleatorio pero reproducible**: se aplica una función hash
 (MD5) sobre el identificador de cada registro y se selecciona según el resto de
-la división. Esto reparte los registros de forma uniforme e independiente de
-cómo se hayan asignado los identificadores, pero de manera determinista — la
-misma consulta devuelve siempre exactamente las mismas filas.
+la división. El reparto es uniforme e independiente de cómo se hayan asignado
+los identificadores, y a la vez determinista: la misma consulta devuelve siempre
+exactamente las mismas filas.
 
 Se descartó el muestreo sistemático (`ID % 10 = 0`) porque quedaría sesgado si
 los identificadores se hubieran asignado por bloques de país, fabricante o lote
 de carga.
 
 Verificado el 24/08/2026 contra el servidor de la EEA: con fracción 10 devuelve
-**1.076.533 filas**, un 0,16 % por debajo del décimo exacto — desviación
+**1.076.533 filas**, un 0,16 % por debajo del décimo exacto, desviación
 coherente con un reparto uniforme.
 
 ---
 
-## Si algo falla
+## Incidencias habituales en Windows
 
-Copia el mensaje de error completo tal cual aparece en el terminal y pásamelo.
-El script reintenta automáticamente los fallos de red, así que si ves algún
-aviso de "reintentando" no es un problema: es el comportamiento esperado.
-
-**Los tres tropiezos más habituales en Windows:**
+El script reintenta de forma automática los fallos de red. Un aviso de
+"reintentando" por pantalla no indica un problema: es el comportamiento
+esperado. Ante cualquier otro fallo, el mensaje completo del terminal identifica
+la causa.
 
 | Síntoma | Causa y solución |
 |---|---|
-| `'python' no se reconoce como un comando` | No se marcó "Add python.exe to PATH". Reinstala Python marcando la casilla. |
-| Error de permisos al activar el entorno virtual | Ejecuta `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned` y vuelve a intentarlo. |
-| Falla la instalación de `xgboost`, `lightgbm` o `shap` | Suele ser falta de las herramientas de compilación de C++. Prueba primero `pip install --upgrade pip setuptools wheel` y repite. Si sigue fallando, pásame el error: hay alternativas. |
+| `'python' no se reconoce como un comando` | No se marcó "Add python.exe to PATH". Reinstalar Python marcando la casilla. |
+| Error de permisos al activar el entorno virtual | Ejecutar `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned` y repetir la activación. |
+| Falla la instalación de `lightgbm` o `shap` | Suele deberse a la ausencia de las herramientas de compilación de C++. Ejecutar `pip install --upgrade pip setuptools wheel` y repetir la instalación resuelve la mayoría de los casos. |
 
 ---
 
-## Instalar más adelante (no hace falta hoy)
+## Componentes adicionales
 
-- **Power BI Desktop** — para el cuadro de mando de la última fase. Gratuito,
-  desde Microsoft Store o desde la web de Microsoft.
-- **OBS Studio** — solo si finalmente grabas el vídeo demo, que es opcional
-  aunque la rúbrica lo valora positivamente.
+- **Power BI Desktop** — necesario para abrir y editar el cuadro de mando
+  `documentos/cuadro_mando_co2.pbix`. Gratuito, desde Microsoft Store o desde la
+  web de Microsoft. El fichero `documentos/cuadro_mando.pdf` reproduce las tres
+  páginas del informe sin necesidad de instalarlo.
+- **OBS Studio** — necesario únicamente para grabar un vídeo demostrativo. No es
+  un entregable obligatorio: la rúbrica se limita a valorarlo positivamente.
